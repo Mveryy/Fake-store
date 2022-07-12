@@ -1,12 +1,16 @@
 import { useContext } from "react"
-import { ApiContext } from "../Context/ApiContext"
+import { Context } from "../Context/Context"
 
 export default function ModalBg() {
-  const {setModalIsOpen} = useContext(ApiContext)
+  const {setModalIsOpen, setCartIsOpen} = useContext(Context)
 
   return (
-    <div className="w-full h-screen fixed bg-black opacity-10 z-10" onClick={() => setModalIsOpen(false)}>
-
+    <div 
+      className="w-full h-full fixed bg-black opacity-10 z-10" 
+      onClick={() => {
+        setModalIsOpen(false)
+        setCartIsOpen(false)
+        }}>
     </div>
   )
 }
