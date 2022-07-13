@@ -1,24 +1,24 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext } from "react"
 import { Context } from "../Context/Context"
-// import Modal from "./Modal"
 
 export default function Products() {
   const { filteredItems, setModalIsOpen, setSelectedProduct, cartItems, setCartItems } = useContext(Context)
 
-  return (filteredItems.map((item, index) => (
+  return (filteredItems.map(item => (
       <div 
-        onClick={() => {
+        className="h-full bg-white flex flex-col rounded-md items-center shadow-md hover:scale-105 transition-all justify-between cursor-pointer">
+        <div onClick={() => {
           setSelectedProduct(item)
           setModalIsOpen(true)
-        }}
-        className="h-full bg-white flex flex-col rounded-md items-center shadow-md hover:scale-105 transition-all justify-between cursor-pointer">
-        <div className="w-full h-52 overflow-hidden rounded-t-md flex place-items-center ">
-          <img className="scale-[30%] transition-all " src={item.image}/>
-        </div>
-        <div className="flex flex-col justify-between items-center flex-1 w-full">
-          <h1 className="font-bold text-center px-4 mt-5">{item.title}</h1>
-          <p className="font-bold text-xl mb-2 mt-2 relative">R${item.price}</p>
-          <p className="mb-6 text-center">Clique para ver a descrição.</p>
+        }}>
+          <div className="w-full h-52 overflow-hidden rounded-t-md flex place-items-center ">
+            <img className="scale-[30%]" src={item.image}/>
+          </div>
+          <div className="flex flex-col justify-between items-center flex-1 w-full">
+            <h1 className="font-bold text-center px-4 mt-5">{item.title}</h1>
+            <p className="font-bold text-xl mb-2 mt-2 relative">R${item.price}</p>
+            <p className="mb-6 text-center">Clique para ver a descrição.</p>
+          </div>
         </div>
         <button 
           className="bottom-0 w-full py-2 rounded-b-md hover:bg-green-100" 
