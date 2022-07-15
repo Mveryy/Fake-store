@@ -15,11 +15,63 @@ export default function App() {
   const [cartItems, setCartItems] = useState([])
   const [cartIsOpen, setCartIsOpen] = useState(false)
   const [cartCount, setCartCount] = useState(0)
+  const [totalPriceCart, setTotalPriceCart] = useState(0)
+
+  function addProduct(item) {
+    const updatedCart = [...cartItems]
+    const productExist = updatedCart.find(product => product.id === item.id)
+    const currentAmount = productExist ? productExist.amount : 0
+    const amount = currentAmount + 1
+    if (productExist) {
+      productExist.amount = amount
+    } else {
+      const newProduct = {
+        ...item,
+        amount: 1
+      }
+      updatedCart.push(newProduct)
+    }
+    setCartItems(updatedCart)
+  }
+
+  function sumTotalPrice() {
+    const totalPrice = cartItems.reduce((totalPrice, item) => {
+      return totalPrice + item.price * item.amount
+    }, 0)
+    setTotalPriceCart(totalPrice)
+  }
+
+  useEffect(() => {
+    sumTotalPrice()
+  }, [cartItems])
+
+  function updateProduct(id, operationType) {
+    const updatedCart = [...cartItems]
+    const productExist = updatedCart.find(product => product.id === id)
+    if (operationType === "-") {
+      if (productExist.amount <= 1) {
+        return
+      }
+      productExist.amount -= 1
+    } else if (operationType === "+") {
+      productExist.amount += 1
+    }
+    setCartItems(updatedCart)
+  }
+
+  function removeProduct(id) {
+    const updatedCart = [...cartItems]
+    const productIndex = updatedCart.findIndex(item => id === item.id)
+    if (productIndex >= 0) {
+      updatedCart.splice(productIndex, 1)
+      setCartItems(updatedCart)
+    }
+  }
 
   useEffect(() => {
     setCartCount(cartItems.length)
   }, [cartItems])
-  
+
 
   useEffect(() => {
     axios.get('https://fakestoreapi.com/products')
@@ -31,40 +83,54 @@ export default function App() {
   }, [])
 
   return (
-    <Context.Provider 
+    <Context.Provider
       value={{
-          items, 
-          setItems, 
-          filteredItems, 
-          setFilteredItems, 
-          modalIsOpen, 
-          setModalIsOpen,
-          selectedProduct, 
-          setSelectedProduct,
-          cartItems,
-          setCartItems,
-          cartIsOpen, 
-          setCartIsOpen,
-          cartCount
+        items,
+        setItems,
+        filteredItems,
+        setFilteredItems,
+        modalIsOpen,
+        setModalIsOpen,
+        selectedProduct,
+        setSelectedProduct,
+        cartItems,
+        setCartItems,
+        cartIsOpen,
+        setCartIsOpen,
+        cartCount,
+        addProduct,
+        removeProduct,
+        updateProduct,
+        totalPriceCart,
+        setTotalPriceCart,
+        sumTotalPrice
       }}>
-        <div className="h-full w-100">
-        {cartIsOpen && 
+      <div className="h-full w-100">
+        {cartIsOpen &&
           <div>
-            <Cart />
+            <Cart cartIsOpen={cartIsOpen} />
             <ModalBg />
           </div>
         }
-        {modalIsOpen && 
-        <div className="flex justify-center items-center h-full w-full fixed z-10">
-          <Modal />
-          <ModalBg />
+
+        {modalIsOpen &&
+          <div className="flex justify-center items-center h-full w-full fixed">
+            <Modal />
+            <ModalBg />
           </div>
         }
-            
-        <Navbar />
+
+        <div className="top-0 sticky">
+          <Navbar />
+        </div>
+
         <div className="grid grid-cols-5 m-6 gap-6 sm:grid-cols-3">
           <Products />
         </div>
+
+
+
+
       </div>
     </Context.Provider>
   )

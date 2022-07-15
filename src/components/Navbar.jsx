@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { Context } from "../Context/Context";
 
 export default function Navbar() {
-  const {items, setFilteredItems, setCartIsOpen, cartCount} = useContext(Context)
+  const { items, setFilteredItems, setCartIsOpen, cartCount } = useContext(Context)
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
@@ -15,33 +15,33 @@ export default function Navbar() {
   }, [items])
 
   return (
-    <div className="bg-white w-full h-20 flex justify-between place-items-center px-8 shadow-lg">
+    <div className="bg-white w-full h-20 flex justify-between place-items-center px-8 shadow-lg z-0">
       <Storefront size={32} color="#b278d9" />
       <div className="flex gap-8 font-bold">
-        <button 
-          onClick={() => setFilteredItems(items)} 
+        <button
+          onClick={() => setFilteredItems(items)}
           className="hover:scale-110 transition-all">
           HOME
         </button>
-        {categories.map(category => 
-        <button 
-          className="hover:scale-110 transition-all"
-          onClick={() => {
-            setFilteredItems(items.filter(item => item.category === category))
-          }}>
+        {categories.map(category =>
+          <button
+            className="hover:scale-110 transition-all"
+            onClick={() => {
+              setFilteredItems(items.filter(item => item.category === category))
+            }}>
             {category.toUpperCase()}
-        </button>
+          </button>
         )}
-        
+
       </div>
       <div className="relative">
-        <ShoppingCart 
-          size={32} 
-          color="#b278d9" 
-          onClick={() => setCartIsOpen(true)} 
-          className="cursor-pointer hover:scale-110 transition-all"/>
+        <ShoppingCart
+          size={32}
+          color="#b278d9"
+          onClick={() => setCartIsOpen(true)}
+          className="cursor-pointer hover:scale-110 transition-all" />
 
-          {cartCount > 0 && <div className="bg-red-600 w-6 h-6 text-white font-bold rounded-full text-center absolute bottom-5 left-5">{cartCount}</div>}
+        {cartCount > 0 && <div className="bg-red-600 w-6 h-6 text-white font-bold rounded-full text-center absolute bottom-5 left-5">{cartCount}</div>}
       </div>
     </div>
   )
