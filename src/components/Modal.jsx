@@ -7,13 +7,13 @@ export default function Modal() {
   const { title, description, price, image } = selectedProduct
 
   return (
-    <div className="max-w-[40%] text-black bg-white rounded-md px-6 py-8 relative flex flex-col justify-between items-center text-center gap-6 z-20">
-      <div className="w-full h-52 rounded-t-md flex items-center justify-center">
-        <img className="h-48" src={image} />
+    <div className="max-w-[40%] text-black bg-white rounded-md px-6 py-8 relative flex flex-col justify-between items-center text-center gap-6 z-20 sm:max-w-[80%] ">
+      <div className="w-full h-52 rounded-t-md flex items-center justify-center sm:h-24">
+        <img className="h-48 sm:h-24" src={image} />
       </div>
       <X size={20} color="#b278d9" weight="bold" className="absolute top-0 right-0 mt-4 mr-4 cursor-pointer" onClick={() => setModalIsOpen(false)} />
       <h1 className="font-bold mt-8">{title}</h1>
-      <p>{description}</p>
+      <p className="sm:text-sm">{description.slice(0, 200) + "..."}</p>
       <p className="font-bold text-xl mb-8">R${price}</p>
       <button
         className="bottom-0 w-full py-2 rounded-b-md hover:bg-green-100 absolute"

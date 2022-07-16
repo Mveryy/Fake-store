@@ -6,7 +6,7 @@ export default function Products() {
 
   return (filteredItems.map(item => (
     <div
-      className={`h-full bg-white flex flex-col rounded-md items-center shadow-md transition-all cursor-pointer text-center`}>
+      className={`h-fit bg-white flex flex-col rounded-md items-center shadow-md transition-all cursor-pointer text-center`}>
       <div onClick={() => {
         setSelectedProduct(item)
         setModalIsOpen(true)
@@ -15,7 +15,7 @@ export default function Products() {
           <img className="h-32 my-8" src={item.image} />
         </div>
         <div className="flex flex-col h-auto w-auto min-h-[150px] justify-between">
-          <h1 className="font-bold px-2">{item.title}</h1>
+          <h1 className="font-bold px-2 text-base">{item.title}</h1>
           <p className="font-bold text-xl">R${item.price}</p>
           <p className="">Clique para ver a descrição.</p>
         </div>

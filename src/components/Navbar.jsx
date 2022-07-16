@@ -16,13 +16,13 @@ export default function Navbar() {
 
   return (
     <div className="bg-white w-full h-20 flex justify-between place-items-center px-8 shadow-lg z-0">
-      <Storefront size={32} color="#b278d9" />
-      <div className="flex gap-8 font-bold">
-        <button
-          onClick={() => setFilteredItems(items)}
-          className="hover:scale-110 transition-all">
-          HOME
-        </button>
+      <Storefront size={32} color="#b278d9"
+        onClick={() => setFilteredItems(items)}
+        className="hover:scale-110 transition-all cursor-pointer" />
+
+      <h1 className="font-bold text-4xl text-[#9353c7] hidden nav:block mx-auto">Fake Store</h1>
+
+      <div className="flex gap-8 font-bold md:gap-4 nav:hidden">
         {categories.map(category =>
           <button
             className="hover:scale-110 transition-all"

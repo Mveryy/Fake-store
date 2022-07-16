@@ -20,7 +20,7 @@ export default function Cart({ cartIsOpen }) {
         <p className="font-bold text-xl float-right mr-6">Total: R${totalPriceCart.toFixed(2)}</p>
         : null}
 
-      <button className="bottom-0 w-full py-2 bg-[#b278d9] font-bold sticky mt-2">Finalizar compra</button>
+      <button className="bottom-0 w-full py-2 bg-[#b278d9] font-bold sticky mt-2 text-white">Finalizar compra</button>
     </aside>
   )
 }

@@ -6,6 +6,7 @@ import axios from "axios"
 import Modal from "./components/Modal";
 import ModalBg from "./components/ModalBg";
 import Cart from "./components/Cart";
+import Footer from "./components/Footer";
 
 export default function App() {
   const [items, setItems] = useState([])
@@ -105,32 +106,34 @@ export default function App() {
         setTotalPriceCart,
         sumTotalPrice
       }}>
-      <div className="h-full w-100">
-        {cartIsOpen &&
-          <div>
-            <Cart cartIsOpen={cartIsOpen} />
-            <ModalBg />
+      <div className="flex flex-col justify-between min-h-screen">
+        <div className="h-full">
+          {cartIsOpen &&
+            <div>
+              <Cart cartIsOpen={cartIsOpen} />
+              <ModalBg />
+            </div>
+          }
+
+          {modalIsOpen &&
+            <div className="flex justify-center items-center h-full w-full fixed">
+              <Modal />
+              <ModalBg />
+            </div>
+          }
+
+          <div className="top-0 sticky">
+            <Navbar />
           </div>
-        }
 
-        {modalIsOpen &&
-          <div className="flex justify-center items-center h-full w-full fixed">
-            <Modal />
-            <ModalBg />
+          <div className="m-6 gap-6 grid grid-cols-5 products h-full">
+            <Products />
           </div>
-        }
 
-        <div className="top-0 sticky">
-          <Navbar />
         </div>
-
-        <div className="grid grid-cols-5 m-6 gap-6 sm:grid-cols-3">
-          <Products />
+        <div className="w-full">
+          <Footer />
         </div>
-
-
-
-
       </div>
     </Context.Provider>
   )
