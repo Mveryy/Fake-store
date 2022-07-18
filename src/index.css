@@ -24,8 +24,15 @@ body {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 580px) {
   .products {
     grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
   }
 }
+
+@media (max-width: 680px) {
+  .cartIconMobile {
+    @apply absolute right-0 bg-white w-12 h-12 rounded-full flex justify-center items-center mr-6 mt-36 drop-shadow-md 
+  }
+}
+

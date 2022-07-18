@@ -7,7 +7,7 @@ export default function Modal() {
   const { title, description, price, image } = selectedProduct
 
   return (
-    <div className="max-w-[40%] text-black bg-white rounded-md px-6 py-8 relative flex flex-col justify-between items-center text-center gap-6 z-20 sm:max-w-[80%] ">
+    <div className="max-w-[40%] text-black bg-white rounded-md px-6 py-8 relative flex flex-col justify-between items-center text-center gap-6 z-30 sm:max-w-[80%] ">
       <div className="w-full h-52 rounded-t-md flex items-center justify-center sm:h-24">
         <img className="h-48 sm:h-24" src={image} />
       </div>

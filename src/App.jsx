@@ -17,6 +17,7 @@ export default function App() {
   const [cartIsOpen, setCartIsOpen] = useState(false)
   const [cartCount, setCartCount] = useState(0)
   const [totalPriceCart, setTotalPriceCart] = useState(0)
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
 
   function addProduct(item) {
     const updatedCart = [...cartItems]
@@ -104,7 +105,9 @@ export default function App() {
         updateProduct,
         totalPriceCart,
         setTotalPriceCart,
-        sumTotalPrice
+        sumTotalPrice,
+        menuIsOpen,
+        setMenuIsOpen
       }}>
       <div className="flex flex-col justify-between min-h-screen">
         <div className="h-full">
