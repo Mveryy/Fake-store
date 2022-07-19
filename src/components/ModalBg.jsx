@@ -6,7 +6,7 @@ export default function ModalBg() {
 
   return (
     <div
-      className="w-full h-full fixed bg-black opacity-10 z-10"
+      className="w-full min-h-full fixed bg-black opacity-10 z-10"
       onClick={() => {
         setModalIsOpen(false)
         setCartIsOpen(false)

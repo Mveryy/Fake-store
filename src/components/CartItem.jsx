@@ -11,14 +11,14 @@ export default function CartItem({ item }) {
   })
 
   return (
-    <div className="text-black w-full mt-2 relative flex pr-8">
-      <div className="h-28 w-fit flex  place-items-center nav:items-start">
-        <img className="scale-[50%]" src={item.image} />
+    <div className="text-black w-full relative flex nav:flex-col pr-8 mb-8 nav:pr-0 shadow">
+      <div className="flex justify-center items-center">
+        <img className="w-[40%] mb-4" src={item.image} />
       </div>
-      <div className="min-w-[210px] text-center">
+      <div className="max-w-[300px] text-center flex flex-col justify-center items-end nav:items-center nav:my-4 nav:max-w-full">
         <h1>{item.title}</h1>
         <div className="flex float-right">
-          <div className="flex items-center nav:mt-6">
+          <div className="flex items-center">
             <p className="font-bold my-4 mr-2">{formatPrice(parseFloat(item.price * item.amount))}</p>
             <button>
               <MinusCircle size={32} color="#b278d9" weight="light" onClick={() => updateProduct(item.id, "-")} />

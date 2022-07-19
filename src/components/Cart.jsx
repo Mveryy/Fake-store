@@ -7,7 +7,7 @@ export default function Cart({ cartIsOpen }) {
   const { cartItems, totalPriceCart, setCartIsOpen } = useContext(Context)
 
   return (
-    <aside className="w-[400px] max-h-[80%] bg-white fixed right-0 mr-8 text-black rounded-md mt-6 drop-shadow-lg overflow-y-auto z-20 nav:w-[80%]">
+    <aside className="w-[400px] max-h-[80%] bg-white fixed right-0 mr-8 text-black rounded-md mt-6 overflow-y-auto z-20 nav:max-w-[80%]">
       <X
         size={25}
         color="#9353c7"

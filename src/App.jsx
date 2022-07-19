@@ -119,7 +119,7 @@ export default function App() {
           }
 
           {modalIsOpen &&
-            <div className="flex justify-center items-center h-full w-full fixed">
+            <div className="flex justify-center items-center min-h-full w-full fixed">
               <Modal />
               <ModalBg />
             </div>
