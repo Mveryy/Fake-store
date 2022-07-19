@@ -1,6 +1,6 @@
 # Fake Store
 
-Projeto criado do 0 a partir da API: ![Fake Store API](https://fakestoreapi.com/), de um e-commerce com menu de categorias, modal para descrição dos items e carrinho para finalizar a compra.
+Projeto criado do 0 a partir da API: <a href="https://fakestoreapi.com/">Fake Store API</a>, de um e-commerce com menu de categorias, modal para descrição dos items e carrinho para finalizar a compra.
 
 ## Screenshots
 
