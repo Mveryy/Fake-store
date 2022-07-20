@@ -25,7 +25,8 @@ Treino de consumo de API, uso de ContextAPI, criação de modais, manipulação 
 
 -   React
 -   Tailwind
--   Phosphor
+-   PhosphorIcons
+-   Axios
 
 ## Autores
 
